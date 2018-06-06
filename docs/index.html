@@ -9,82 +9,38 @@
 
 <body>
     <div class="header">
-      <h1 align = "center">Hello, World!</h1>
+      <h1 align="center">Rob's JavaScript30 Solutions</h1>
     </div>
   
     <div class="flex-grid">
-        <div class="item">
-          <div>
-            <img src="sample.jpg" alt="Sample" width=100%></img>
-          </div>
-          <div>
-            <h2>01 - Drum Kit</h1>
-            <p>Here is a description of what went down in the thingy</p>
-        </div>
-        </div>
-        <div class="item">
-            <div>
-              <img src="sample.jpg" alt="Sample" width=100%></img>
-            </div>
-            <div>
-              <h2>02 - CSS Clock</h1>
-              <p>Here is a description of what went down in the thingy</p>
-            </div>
-          </div>
-          <div class="item">
-              <div>
-                <img src="sample.jpg" alt="Sample" width=100%></img>
-              </div>
-              <div>
-                <h2>03 - CSS Variables</h1>
-                <p>Here is a description of what went down in the thingy</p>
-              </div>
-          </div>
+      <div class="item" >
+        <a href="projects/javascript30//01_drumkit/01_drumkit.html">
+        <img src="images/javascript30/01_drumkit.jpg" class="thumbnail" width=100%></img>
+        </a>
+        <h2 class="title">01 - Drum Kit</h2>
+        <hr>
+        <p class="description">Play drums, JavaScript style</p>
+      </div>
+      <div class="item">
+        <a href="projects/javascript30//02_clock/02_clock.html">
+        <img src="images/javascript30/02_clock.jpg" class="thumbnail" width=100%></img>
+        </a>
+        <h2 class="title">02 - Clock</h2>
+        <hr>
+        <p class="description">Tick tock, with CSS!</p>
+      </div>
+      <div class="item">
+        <img src="images/sample.jpg" alt="Sample" width=100%></img>
+        <h2 class="title">03 - CSS Variables</h2>
+        <hr>
+        <p class="description">Here is a description of what went down in the thingy</p>
+      </div>
     </div>
+    
     <div class="flex-grid">
         <div class="item">Item 4</div>
         <div class="item">Item 5</div>
         <div class="item">Item 6</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 10</div>
-        <div class="item">Item 11</div>
-        <div class="item">Item 12</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 13</div>
-        <div class="item">Item 14</div>
-        <div class="item">Item 15</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 16</div>
-        <div class="item">Item 17</div>
-        <div class="item">Item 18</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 19</div>
-        <div class="item">Item 20</div>
-        <div class="item">Item 21</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 22</div>
-        <div class="item">Item 23</div>
-        <div class="item">Item 24</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 25</div>
-        <div class="item">Item 26</div>
-        <div class="item">Item 27</div>
-    </div>
-    <div class="flex-grid">
-        <div class="item">Item 28</div>
-        <div class="item">Item 29</div>
-        <div class="item">Item 30</div>
     </div>
 
 <script>
@@ -92,27 +48,42 @@
   // Declare Variables
   //------------------
   const items = document.querySelectorAll('.item');
+  const thumbnails = document.querySelectorAll('.thumbnail');
 
   //------------------
   // Declare functions
   //------------------
   function mouseEnterItem(e)
   {
-    console.log("Mouse entered item...");
+    //console.log("Started hovering over an item...");
     this.classList.add('hovered');
   }
 
-  function mouseExitItem(e)
+  function mouseLeaveItem(e)
   {
-    console.log("Mouse exited item...");
+    //console.log("Stopped hovering over an item...);
     this.classList.remove('hovered');
+  }
+
+  function mouseEnterThumbnail(e)
+  {
+    //console.log("Started hovering over a thumbnail...");
+    this.src = this.src.slice(0, -3) + "gif";
+  }
+
+  function mouseLeaveThumbnail(e)
+  {
+    //console.log("Stopped hovering over a thumbnail...");
+    this.src = this.src.slice(0, -3) + "jpg";
   }
 
   //--------------------------
   // Establish Event Listeners
   //--------------------------
   items.forEach(item => item.addEventListener('mouseenter', mouseEnterItem));
-  items.forEach(item => item.addEventListener('mouseleave', mouseExitItem));
+  items.forEach(item => item.addEventListener('mouseleave', mouseLeaveItem));
+  thumbnails.forEach(thumbnail => thumbnail.addEventListener('mouseenter', mouseEnterThumbnail));
+  thumbnails.forEach(thumbnail => thumbnail.addEventListener('mouseleave', mouseLeaveThumbnail));
 
 </script>
 
