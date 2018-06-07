@@ -4,7 +4,8 @@ html
   background: url(https://images.unsplash.com/photo-1485801468070-3c1af624702e) bottom center;
   background-size: cover;
 }
-body,html
+
+body, html
 {
   margin: 0;
   padding: 0;
