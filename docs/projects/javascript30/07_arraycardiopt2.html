@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>07 - Array Cardio, Part 2</title>
+</head>
+
+<body>
+  <p><em>Hey! Have a look at the console...</em> 👉</p>
+  
+  <script>
+    console.log("Creating an array of objects named \"people\"...");
+    const people =
+    [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 }
+    ];
+
+    console.log("Creating an array of objects named \"comments\"...");
+    const comments =
+    [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+    console.log("");
+
+    console.log("1. Check if at least one person is 19 or older using Array.prototype.some().");
+    const isAdult = people.some(person => (((new Date()).getFullYear()) - person.year >= 19));
+    console.log(isAdult);
+    console.log("");
+      
+    console.log("2. Check if everyone 19 or older using Array.prototype.every().");
+    const allAdults = people.every(person => (((new Date()).getFullYear()) - person.year >= 19));
+    console.log(allAdults);
+    console.log("");
+
+    console.log("3. Find the comment with ID of 823423 using Array.prototype.find().");
+    const comment = comments.find(comment => comment.id === 823423);
+    console.log(comment);
+    console.log("");
+
+    console.log("4. Find the index of the comment with ID 823423 using Array.prototype.findIndex().");
+    const index = comments.findIndex(comment => comment.id === 823423);
+    console.log(index);
+    console.log("");
+      
+    console.log("5. Remove the object with the given index using Array.prototype.slice().");
+    const newComments = [...comments.slice(0, index), ...comments.slice(index +1)];
+    console.log("Original Array");
+    console.table(comments);
+    console.log("New Array");
+    console.table(newComments);
+    console.log("");
+
+  </script>
+</body>
+</html>
