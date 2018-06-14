@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>14 - Reference VS Copy</title>
+</head>
+<body>
+    
+  <p><em>Hey! Have a look at the console...</em> 👉</p>
+
+  <script>
+    
+    // Start with strings, numbers and booleans
+    console.warn("=== Numbers ===");
+    console.log("let a = 1;"); let a = 1;
+    console.log("let b = a;"); let b = a;
+    console.log("%cRight now, a = " + a + " and b = " + b + ".", "color: lightgrey");
+    console.log("a = 2;"); a = 2;
+    console.log("%cAnd now, a = " + a + " and b = " + b + ".", "color: lightgrey");
+      
+    console.log("\n");
+      
+    console.warn("=== Strings ===");
+    console.log("let name = 'Wes';"); let name = 'Wes';
+    console.log("let name2 = name;"); let name2 = name;
+    console.log("%cRight now, name = " + name + " and name2 = " + name2 + ".", "color: lightgrey");
+    console.log("name = 'Wesley';"); name = 'Wesley';
+    console.log("%cAnd now, name = " + name + " and name2 = " + name2 + ".", "color: lightgrey");
+      
+    console.log("\n");
+    
+    // Let's say we have an array and we want to make a copy of it.
+    console.warn("=== Arrays ===");
+    console.log("const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];"); const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+    console.log("const team = players;"); const team = players;
+    console.log("%cRight now, players = [" + players + "]", "color: lightgrey");
+    console.log("%cand team = [" + team + "].", "color: lightgrey");
+
+    // However, what happens when we update the second array?
+    console.log("team[3] = 'Lux';"); team[3] = 'Lux';
+    console.log("%cNow, players = [" + players + "]", "color: lightgrey");
+    console.log("%cand team = [" + team + "].", "color: lightgrey");
+    
+    // Now here is the problem, we've edited the original array too!
+    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+
+    // So, how do we fix this? We take a copy instead...
+    console.log("const team2 = players.slice();"); const team2 = players.slice();
+    // ...or create a new array and concat the old one in...
+    console.log("const team3 = [].concat(players);"); const team3 = [].concat(players);
+    // ...or use the new ES6 Spread...
+    console.log("const team4 = [...players];"); const team4 = [...players];
+    //...or use the Array.from method...
+    console.log("const team5 = Array.from(players);"); const team5 = Array.from(players);
+    
+    
+    // Now when we update it, the original one isn't changed
+    console.log("team2[0] = 'W';"); team2[0] = 'W';
+    console.log("team3[0] = 'X';"); team3[0] = 'X';
+    console.log("team4[0] = 'Y';"); team4[0] = 'Y';
+    console.log("team5[0] = 'Z';"); team5[0] = 'Z';
+    
+    console.log("%cAt this time, team = ["  + team + "] and", "color: lightgrey");
+    console.log("%cand team2 = ["  + team2 + "],", "color: lightgrey");
+    console.log("%cand team3 = ["  + team3 + "],", "color: lightgrey");
+    console.log("%cand team4 = ["  + team4 + "],", "color: lightgrey");
+    console.log("%cand team5 = ["  + team5 + "].", "color: lightgrey");
+      
+    console.log("\n");
+
+    // The same thing goes for objects!
+    console.warn("=== Objects ===");
+    console.log("const person = { name: 'Rob Link', age: 80 };"); const person = { name: 'Rob Link', age: 80 };
+    console.log("const captain = person;"); const captain = person;
+    console.log("%cRight now, person = " + JSON.stringify(person) + "\nand captain = " + JSON.stringify(captain) + ".", "color: lightgrey");
+    console.log("capatain.number = 100;"); captain.number = 100;
+    console.log("%cBut now, person = " + JSON.stringify(person) + "\nand captain = " + JSON.stringify(captain) + ".", "color: lightgrey");
+
+    // How do we take a copy instead?
+    console.log("const captain2 = Object.assign({}, person, {number: 99});"); const captain2 = Object.assign({}, person, {number: 99, age: 12});
+    console.log("%cRight now, person = " + JSON.stringify(person) + "\nand captain = " + JSON.stringify(captain) + "\nand captain2 = " + JSON.stringify(captain2) + ".", "color: lightgrey");
+    
+    // We will hopefully soon see the object ...spread!
+
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    console.log("const wes = {name: 'Wes', age: 50, social: {twitter: '@wesbos', facebook: 'wesbos.developer'}};"); const wes = {name: 'Wes', age: 50, social: {twitter: '@wesbos', facebook: 'wesbos.developer'}};
+    console.log("const dev = Object.assign({}, wes);"); const dev = Object.assign({}, wes);
+    console.log("dev.name = 'Wesley';"); dev.name = 'Wesley';
+    console.log("%cRight now, wes = " + JSON.stringify(wes)+ "\nand dev = " + JSON.stringify(dev) + ".", "color: lightgrey");
+    console.log("dev.social.twitter = '@coolman';"); dev.social.twitter = '@coolman';
+    console.log("%cAnd now, wes = " + JSON.stringify(wes)+ "\nand dev = " + JSON.stringify(dev) + ".", "color: lightgrey");
+      
+    //The poor man's deep clone!
+    console.log("const dev2 = JSON.parse(JSON.stringify(wes));"); const dev2 = JSON.parse(JSON.stringify(wes));
+    console.log("dev2.social.twitter = '@coolerman';"); dev2.social.twitter = '@coolerman';
+    console.log("%cAt this point, wes = " + JSON.stringify(wes)+ "\nand dev2 = " + JSON.stringify(dev2) + ".", "color: lightgrey");
+
+  </script>
+
+</body>
+</html>
