@@ -1,0 +1,16 @@
+{
+  "name": "gum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "19_webcamfun.js",
+  "scripts":
+  {
+    "start": "browser-sync start --server --files \"19_webcamfun.css, 19_webcamfun.html, 19_webcamfun.js, 20_speechdetection.html, 21_geolocation.html\" --https"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies":
+  {
+    "browser-sync": "^2.12.5 <2.23.2"
+  }
+}
