@@ -8,8 +8,15 @@ html
 body
 {
   /*background-color: #adc80a33;*/
-  margin: 0% 12%;
-  padding: 50px 00px;
+  margin: 0% 4%;
+  padding: 40px 00px;
+}
+
+h1
+{
+  font-family: 'Rock Salt';
+  font-size: 50;
+  color: #000F55aa
 }
 
 hr
@@ -39,6 +46,7 @@ hr
 .title
 {
   /*background-color: #6622ff33;*/
+  font-family: 'Rock Salt';
   font-size: 12px;
   margin: 0px 0px;
   padding: 5px 14px;
@@ -48,6 +56,7 @@ hr
 .description
 {
   /*background-color: #ffaa2233;*/
+  font-family: 'Rock Salt';
   color: grey;
   font-style: italic;
   font-size: 10px;
